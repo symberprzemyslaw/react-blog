@@ -13,7 +13,7 @@ const Login = () => {
 
     const login = () => {
         signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
+            .then(() => { // userCredential
                 navigate('/create')
             })
             .catch((error) => {

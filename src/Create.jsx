@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { collection, addDoc} from "firebase/firestore";
+import {db} from "./Home"
 
 const Create = () => {
     const [title, setTitle] = useState('')
@@ -13,16 +15,13 @@ const Create = () => {
         const blog = {title, body, author}
 
         setIsPending(true)
-        fetch('http://localhost:8000/blogs', {
-            method: 'POST',
-            headers: {"Content-Type" : "application/json"},
-            body: JSON.stringify(blog)
-        }).then(() => {
-            console.log('New blog added')
-            setIsPending(false)
-            history.push('/')
-        })
-
+        addDoc(collection(db, "posts"), {
+            title: title,
+            body: body,
+            author : author
+          });
+         setIsPending(false)
+        history('/')
         
     }
     return ( 
@@ -33,12 +32,14 @@ const Create = () => {
                 <input 
                 type="text"
                 required
+                maxLength={100}
                 onChange={ e => setTitle(e.target.value) }
                 />
                 <label>Blog body:</label>
                 <textarea 
                 type="text"
                 required
+                maxLength={600}
                 onChange={ e => setBody(e.target.value)} 
                 />
                 <label>Blog author:</label>
