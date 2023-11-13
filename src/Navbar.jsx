@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import logo from "./react-logo.png"
-import { useState } from "react";
 
 import { getAuth, signOut } from "firebase/auth";
 
@@ -17,7 +16,7 @@ const Navbar = ({logged}) => {
                 <Link to="/">Home</Link>
                 { logged  &&  <Link to="/create">New Blog</Link>}
                 { !logged && <Link to="/login">Login</Link>}
-                { logged && <button onClick={logout}>Log-out</button>}
+                { logged && <a onClick={logout}>Log-out</a>}
             </div>
         </nav>
      );

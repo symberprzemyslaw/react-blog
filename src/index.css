@@ -27,6 +27,7 @@
   padding: 6px;
 }
 .navbar a:hover {
+  cursor: pointer;
   color: #5ccce8;
 }
 .content {
@@ -121,4 +122,8 @@
 .login-container {
   display: flex;
   justify-content: center;
+}
+
+.home div {
+  margin-bottom: 15px;
 }

@@ -28,14 +28,14 @@ const Create = () => {
         <div className="create">
             <h2>Add a New Blog</h2>
             <form onSubmit={handleSubmit}>
-                <label>Blog title:</label>
+                <label>Blog title (max 100 characters):</label>
                 <input 
                 type="text"
                 required
                 maxLength={100}
                 onChange={ e => setTitle(e.target.value) }
                 />
-                <label>Blog body:</label>
+                <label>Blog body (max 600 characters):</label>
                 <textarea 
                 type="text"
                 required
